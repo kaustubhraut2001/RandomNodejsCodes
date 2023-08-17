@@ -1,0 +1,8 @@
+ ---- URL -----
+ https -> hyper text transfer protocol secure ://www.google.com -> domain name :/ path for pages
+
+ protocol
+ hypertext
+ transfer
+ protocol
+ secure
