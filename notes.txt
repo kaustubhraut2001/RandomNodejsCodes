@@ -22,5 +22,7 @@ example
 PUT - update the whole user
 PATCH - update only user's name
 
-
+--- Express ---
+it uses http only to bulid server
+it only simplies creating the server we dont needs http or any other modules
 
