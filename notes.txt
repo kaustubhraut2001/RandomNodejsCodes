@@ -26,3 +26,13 @@ PATCH - update only user's name
 it uses http only to bulid server
 it only simplies creating the server we dont needs http or any other modules
 
+
+---- express : ^4.18.6 ----
+first part 4 is major version
+second part 18 is minor version (recomended update / security fixes)
+third part 6 is patch version (minor bug fixes) it is an optional update
+
+^ symbol represnt it will keep as it is 4 it wwill only update the minor versions but it will nt do it to 15 versioining
+
+~ symbol represnt it will keep as it is 4.18 it will only update the patch versions but it will nt do it to 18.6 versioining (last part)
+
