@@ -12,26 +12,28 @@ const server = http.createServer((req, res) => {
 
 
     fs.appendFile('log.txt', log, (err, result) => {
-        if (err)
-            console.log(err);
-        else
-            console.log("File Write Successfully ");
+
+        switch (urll.pathname) {
+            case '/':
+                res.end('Home Page');
+                break;
+            case '/about':
+                res.end('About Page');
+                break;
+            default:
+                res.end('Something went wrong');
+
+
+        }
+        // if (err)
+        //     console.log(err);
+        // else
+        //     console.log("File Write Successfully ");
 
     });
 
-    switch (req.url) {
-        case '/':
-            res.end('Home Page');
-            break;
-        case '/about':
-            res.end('About Page');
-            break;
-        default:
-            res.end('Something went wrong');
 
-
-    }
-    res.end('Server Started successfully');
+    // res.end('Server Started successfully');
 });
 
 server.listen(process.env.PORT, () => {

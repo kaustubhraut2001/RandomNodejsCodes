@@ -6,3 +6,12 @@
  transfer
  protocol
  secure
+
+
+--- HTTP METHODS ----
+GET - retrieve data from a specified resource (getting the data from server)
+POST - submit data to be processed to a specified resource (sending data to server)
+PUT - update a specified resource (updating data on server)
+DELETE - delete a specified resource (deleting data on server)
+PATCH - update partial resources (updating data on server)
+
