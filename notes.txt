@@ -15,3 +15,12 @@ PUT - update a specified resource (updating data on server)
 DELETE - delete a specified resource (deleting data on server)
 PATCH - update partial resources (updating data on server)
 
+---- what is difference between PUT and PATCH? ----
+PUT - update the whole resource
+PATCH - update partial resource
+example
+PUT - update the whole user
+PATCH - update only user's name
+
+
+

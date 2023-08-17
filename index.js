@@ -18,8 +18,19 @@ const server = http.createServer((req, res) => {
                 res.end('Home Page');
                 break;
             case '/about':
-                res.end('About Page');
+                const a = urll.query.a;
+
+                res.end(`About Page + ${a}`);
                 break;
+            case '/signup':
+                if (req.method === 'GET') {
+                    res.end('Signup Page');
+                } else if (req.method === 'POST') {
+                    res.end('Signup Page');
+
+
+
+                }
             default:
                 res.end('Something went wrong');
 
