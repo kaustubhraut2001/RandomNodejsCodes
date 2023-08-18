@@ -6,9 +6,9 @@ const url = require('url');
 const mongoose = require('mongoose');
 const User = require('./Schemas/user');
 const data = require('./MOCK_DATA.json');
-
+const user = require('./routes/user');
 const express = require("express");
-const user = require('./Schemas/user');
+const userrouter = require('./Schemas/user');
 
 const app = express();
 
@@ -38,137 +38,7 @@ app.use((req, res, next) => {
     next();
 });
 
-
-app.post('/alldata', async(req, res) => {
-    const alldata = data;
-    await User.insertMany(alldata);
-    console.log(alldata);
-    res.status(200).json("Data has been added succesfully");
-});
-
-
-
-
-app.post('/api/user', async(req, res) => {
-    const user = await User.create({
-
-        firstname: body.firstname,
-        lastname: body.lastname,
-        email: body.email,
-        gender: body.gender
-
-    });
-    console.log(user);
-    return res.status(201).json(user);
-
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-// we can send header
-// we can set and get the headers that we are requesting from the server
-
-// if we wants to create our own header then we append X-Myname in front of our header
-// we have an custom headers major use while authothetification
-
-
-// app.get('/api/user', (req, res) => {
-//     const g = req.headers;
-//     console.log(g);
-//     res.setHeader('Content-Type', 'application/json');
-//     return res.status(201).json(data);
-
-// });
-
-app.get('/user', (req, res) => {
-
-    const alluser = User.find({});
-
-
-    const html = alluser.map((user) => {
-        `<ul>
-            <li>${user}</li>
-
-            </ul>`
-
-
-    });
-    return res.status(200).json(html);
-});
-
-
-
-app.get('/users/:id', async(req, res) => {
-    const id = await User.findById(req.params.id);
-    return res.status(200).json(id);
-})
-
-
-
-
-
-
-// app.patch('/api/user/:id', (req, res) => {
-//     return res.json("Working ");
-
-// });
-
-// app.delete('/api/delete/user/:id', (req, res) => {
-
-//     const id = Number(req.params.id);
-//     const user = data.find((user) => user.id === id);
-//     delete user;
-//     res.json("User has been deleted succesfully ");
-
-// });
-
-app.route('/api/user/:id').post((req, res) => {
-    const as = req.body;
-    data.push({...as, id: as.length + 1 });
-    fs.watchFile('./MOCK_DATA.json', JSON.stringify(as), (err, result) => {
-        res.json("User has been added succesfully ");
-
-    });
-    return res.json(as);
-}).delete(async(req, res) => {
-    const id = await User.findByIdAndDelete(req.params.id);
-
-    delete user;
-    res.json("User has been deleted succesfully ")
-}).patch((req, res) => {
-
-    const id = User.findByIdAndUpdate(req.params.id);
-    const dataa = req.body;
-    const user = data.find((user) => user.id === id);
-    user = {...user, ...dataa };
-    res.json("User has been updated succesfully ");
-
-});
-
-
-app.get('/about', (req, res) => {
-
-
-    return res.send('About Page');
-});
-
-app.get('/signup', (req, res) => {
-    return res.send(`Signup Page ${req.query.name}`);
-
-
-});
+app.use('/', userrouter);
 
 
 
