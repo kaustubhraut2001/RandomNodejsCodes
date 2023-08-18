@@ -67,3 +67,16 @@ Headers carry information for the request and response body
 300- 399 - Redirection Response
 400- 499 - Client Error Response
 500- 599 - Server Error Response
+
+
+---- MongoDb ----
+ No SQL database documents based database
+
+ strong suppoert for aggregation pipes -> aggregation pipes are used to process data records and return computed results
+
+wokrs on BSON format -> BSON is a binary representation of JSON documents
+
+Best fro node APPlication
+
+Architecture of MongoDB
+Database -> Collection -> Document -> Fields -> Values -> Binary JSON (BSON) -> JSON (JavaScript Object Notation)
