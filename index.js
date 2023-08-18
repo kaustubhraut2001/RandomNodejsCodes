@@ -61,12 +61,32 @@ app.post('/api/user', (req, res) => {
 
 // });
 
-app.route('/api/user/:id').patch((req, res) => { return res.json("Working ");
+app.route('/api/user/:id').post((req, res) => {
+       const as = req.body;
+       data.push({...as , id : as.length + 1});
+        fs.watchFile('./MOCK_DATA.json', JSON.stringify(as), (err, result) => {
+           res.json("User has been added succesfully ");
 
+        });
+       return res.json(as);
 }).delete((req, res) => {  const id = Number(req.params.id);
     const user = data.find((user) => user.id === id);
     delete user;
-    res.json("User has been deleted succesfully ")});
+    res.json("User has been deleted succesfully ")}).patch((req, res) => {
+
+        const id = Number(req.params.id);
+        const d = req.body;
+        data.map((user)=>{
+            if(user.id ===id){
+                user = req.body;
+            }else{
+                res.json("User not Found");
+            }
+
+        })
+        res.json("User has been updated succesfully ");
+
+    });
 
 
 app.get('/about', (req, res) => {
