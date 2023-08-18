@@ -12,6 +12,7 @@ const app = express();
 
 // Express Middleware -- we can trate it as plugin
 app.use(express.urlencoded({ extended: false }));
+// this code will set the header of the response it checks to contnet type first if it is form type then it changes it to json
 
 app.use((req, res, next) => {
     fs.appendFile("log.txt", Date.now() + ' ' + req.method + ' ' + "New request reacived", (err, result) => {
@@ -44,15 +45,25 @@ app.use((req, res, next) => {
 
 
 
+// we can send header
+// we can set and get the headers that we are requesting from the server
+
+// if we wants to create our own header then we append X-Myname in front of our header
+// we have an custom headers major use while authothetification
 
 
 app.get('/api/user', (req, res) => {
-
+    const g = req.headers;
+    console.log(g);
+    res.setHeader('Content-Type', 'application/json');
     return res.json(data);
 
 });
 
 app.get('/user', (req, res) => {
+
+            const h = res.setHeader("browser", "chrome");
+            console.log(h);
 
             const html =
                 `<ul>

@@ -42,3 +42,20 @@ third part 6 is patch version (minor bug fixes) it is an optional update
 Representational State Transfer
 
 ---- Express Middlewares ----
+
+
+--- HTTP Headers ---
+Headers are used to provide information to both client and server
+
+it has an extra info for the user so that we can send that data to the dbfrom the server
+like login , username and all
+HTTP headers are an important part of the API request and response as they represnt the meta-data associated with the api request adn response
+
+Headers carry information for the request and response body
+
+
+// we can send header
+// we can set and get the headers that we are requesting from the server
+
+// if we wants to create our own header then we append X-Myname in front of our header
+// we have an custom headers major use while authothetification
