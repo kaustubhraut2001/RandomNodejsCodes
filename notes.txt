@@ -36,3 +36,7 @@ third part 6 is patch version (minor bug fixes) it is an optional update
 
 ~ symbol represnt it will keep as it is 4.18 it will only update the patch versions but it will nt do it to 18.6 versioining (last part)
 
+
+
+---- Restful API ----
+Representational State Transfer

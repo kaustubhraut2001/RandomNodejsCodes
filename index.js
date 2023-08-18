@@ -2,16 +2,71 @@ const http = require('http');
 const dotenv = require('dotenv');
 const fs = require("fs");
 const url = require('url');
+
+const data = require('./MOCK_DATA.json');
 dotenv.config();
 const express = require("express");
 
 const app = express();
 
-app.get('/', (req, res) => {
+app.get('/api/user', (req, res) => {
 
+    return res.json(data);
 
-    return res.send('Home Page');
 });
+
+app.get('/user', (req, res) => {
+
+            const html =
+                `<ul>
+
+             ${data.map((user) =>
+                ` <li>   ${user.first_name} </li>`
+             )}
+
+              </ul>`;
+    return res.send(html);
+
+});
+
+
+
+app.get('/users/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const user = data.find((user) => user.id === id);
+    return res.json(user);
+})
+
+
+
+app.post('/api/user', (req, res) => {
+
+    return res.json("Working ");
+
+
+});
+
+
+// app.patch('/api/user/:id', (req, res) => {
+//     return res.json("Working ");
+
+// });
+
+// app.delete('/api/delete/user/:id', (req, res) => {
+
+//     const id = Number(req.params.id);
+//     const user = data.find((user) => user.id === id);
+//     delete user;
+//     res.json("User has been deleted succesfully ");
+
+// });
+
+app.route('/api/user/:id').patch((req, res) => { return res.json("Working ");
+
+}).delete((req, res) => {  const id = Number(req.params.id);
+    const user = data.find((user) => user.id === id);
+    delete user;
+    res.json("User has been deleted succesfully ")});
 
 
 app.get('/about', (req, res) => {
