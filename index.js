@@ -39,6 +39,13 @@ app.use((req, res, next) => {
 });
 
 
+app.post('/alldata', async(req, res) => {
+    const alldata = data;
+    await User.insertMany(alldata);
+    console.log(alldata);
+    res.status(200).json("Data has been added succesfully");
+});
+
 
 
 
