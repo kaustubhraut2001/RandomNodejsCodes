@@ -1,4 +1,4 @@
-const http = require('http');
+// const http = require('http');
 const dotenv = require('dotenv');
 const fs = require("fs");
 const url = require('url');
@@ -56,7 +56,7 @@ app.get('/api/user', (req, res) => {
     const g = req.headers;
     console.log(g);
     res.setHeader('Content-Type', 'application/json');
-    return res.json(data);
+    return res.status(201).json(data);
 
 });
 
@@ -73,7 +73,7 @@ app.get('/user', (req, res) => {
              )}
 
               </ul>`;
-    return res.send(html);
+    return res.status(200).send(html);
 
 });
 
